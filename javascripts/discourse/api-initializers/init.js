@@ -41,9 +41,9 @@ export default apiInitializer((api) => {
     if (userProfileUsername !== null) {
       const userModel = await User.findByUsername(userProfileUsername);
       const groupData = getGroupSettingData(userModel);
-
-      if (groupData !== null) {
-        const svgParent = document.getElementsByClassName("user-profile-names__primary")[0];
+      const svgParent = document.getElementsByClassName("user-profile-names__primary")[0];
+      
+      if (groupData !== null && svgParent.children.length < 3) {
         if (svgParent.children.length > 0) svgParent.removeChild(svgParent.children[0]);
         svgParent.innerHTML += htmlSafe(
           iconHTML(groupData.icon, {
@@ -56,7 +56,7 @@ export default apiInitializer((api) => {
     // Topics and posts
     const postAuthors = document.getElementsByClassName("topic-meta-data");
 
-    if (postAuthors.length !== 0 && currentRoute.parent.name === "topic") {
+    if (postAuthors.length < 3 && currentRoute.parent.name === "topic") {
       for (const user of postAuthors) {
         const userInfo = user.children[0].children[0].children[0];
         const posterUsername = userInfo.innerText;
