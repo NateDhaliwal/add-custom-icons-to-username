@@ -1,5 +1,17 @@
 en:
   theme_metadata:
-    description: "TODO"
+    description: "Adds icons next to usernames in posts, user cards and profile pages depending on a user's groups. It assumes each user occurs only once."
     settings:
-      example_setting: "A description of a setting."
+      group_icon_data:
+        description: "Configure icons and labels for different groups"
+        schema:
+          properties:
+            groups:
+              name: "Groups"
+              description: "Groups with this icon"
+            icon:
+              name: "Icon"
+              description: "Icon for groups"
+            label:
+              name: "Label"
+              description: "Label text for icons for screen readers"
