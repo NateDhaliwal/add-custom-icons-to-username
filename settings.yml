@@ -1,2 +1,15 @@
-example_setting:
-  default: true
+group_icon_data:
+  type: objects
+  default: []
+  schema:
+    name: group
+    properties:
+      groups:
+        type: groups
+        required: true
+      icon:
+        type: string
+        required: true
+      icon_label:
+        type: string
+        required: true
