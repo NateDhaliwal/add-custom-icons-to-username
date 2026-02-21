@@ -88,8 +88,8 @@ export default apiInitializer((api) => {
       const userModel = await User.findByUsername(username);
       const groupData = getGroupSettingData(userModel);
 
-      if (groupData !== null) {
-        if (userCardUserLink.children.length > 1) userCardUserLink.removeChild(userCardUserLink.children[1]);
+      if (groupData !== null && userCardUserLink.children.length < 3) {
+        if (userCardUserLink.children.length === 2) userCardUserLink.removeChild(userCardUserLink.children[1]);
         userCardUserLink.innerHTML += htmlSafe(
           iconHTML(groupData.icon, {
             label: groupData.icon_label
